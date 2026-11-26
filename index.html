@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#E4E2DB">
+<meta name="description" content="五个古风人格测试，五件古代器物：竹简列传、身份文牒、仙门玉牌、武林秘籍、司命戏本。每个十五题，两分钟测完。">
+<title>古风人格测试合集</title>
+<style>
+  :root {
+    --bg: #E4E2DB; --paper: #F6F4EE; --ink: #1F2724; --ink-2: #4E5A56; --ink-3: #85918C;
+    --line: rgba(31, 39, 36, .14); --zhu: #A93A2A;
+    --serif: "Noto Serif SC", "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", "STSong", "SimSun", serif;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; font-family: var(--serif); color: var(--ink); background: var(--bg); line-height: 1.8; -webkit-font-smoothing: antialiased; }
+  main { max-width: 1040px; margin: 0 auto; padding: 56px 20px 72px; }
+  header { position: relative; max-width: 600px; }
+  h1 { margin: 0; font-size: clamp(34px, 9vw, 58px); font-weight: 900; line-height: 1.15; letter-spacing: .02em; }
+  h1 span { display: block; font-size: .46em; font-weight: 500; color: var(--ink-2); letter-spacing: .12em; margin-bottom: 8px; }
+  .lead { margin: 22px 0 0; padding-top: 18px; color: var(--ink-2); font-size: 17px; max-width: 28em;
+    border-top: 1px solid #A8864A; border-image: linear-gradient(90deg, #A8864A 0 64px, transparent 64px) 1; }
+  .list { list-style: none; margin: 40px 0 0; padding: 0; display: grid; gap: 14px; grid-template-columns: 1fr; }
+  @media (min-width: 760px) { .list { grid-template-columns: repeat(2, 1fr); } }
+  .card {
+    display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 18px; align-items: center; height: 100%;
+    padding: 18px; background: var(--paper); border: 1px solid var(--line); border-radius: 2px;
+    color: inherit; text-decoration: none; transition: border-color .2s, transform .2s;
+  }
+  .card:hover { border-color: var(--c); transform: translateY(-2px); }
+  .card:focus-visible { outline: 2px solid var(--zhu); outline-offset: 3px; }
+  .art { position: relative; height: 136px; display: grid; place-items: center; }
+  .body h2 { margin: 0 0 4px; font-size: 18px; line-height: 1.5; }
+  .body p { margin: 0; font-size: 14px; color: var(--ink-2); line-height: 1.75; }
+  .meta { margin-top: 10px !important; font-size: 13px !important; color: var(--c) !important; letter-spacing: .04em; }
+  footer { margin-top: 40px; font-size: 13px; color: var(--ink-3); }
+
+  /* 竹简 */
+  .a-slips { display: flex; flex-direction: row-reverse; gap: 2px; position: relative; }
+  .a-slips i { width: 16px; height: 116px; background: linear-gradient(90deg, #D3BE87, #E8DAB2 25%, #E4D4A6 75%, #C6AE77); border-radius: 2px; }
+  .a-slips i:first-child { background-image: linear-gradient(#2A2A22, #2A2A22), linear-gradient(90deg, #D3BE87, #E8DAB2 25%, #E4D4A6 75%, #C6AE77); background-size: 4px 54px, 100% 100%; background-position: center 18px, 0 0; background-repeat: no-repeat; }
+  .a-slips::before, .a-slips::after { content: ""; position: absolute; left: -6px; right: -6px; height: 2px; background: rgba(110, 70, 40, .8); }
+  .a-slips::before { top: 10px; } .a-slips::after { bottom: 10px; }
+  /* 文牒 */
+  .a-doc { position: relative; width: 92px; height: 122px; background: #F6F0E4; border: 3px double rgba(168, 50, 42, .8); box-shadow: 0 8px 16px -10px rgba(60, 30, 20, .5); }
+  .a-doc::before { content: ""; position: absolute; left: 12px; right: 12px; top: 16px; height: 62px; background: repeating-linear-gradient(rgba(168, 50, 42, .35) 0 1px, transparent 1px 12px); }
+  .a-doc b { position: absolute; right: -10px; bottom: -8px; width: 36px; height: 36px; display: grid; place-items: center; font-size: 13px; font-weight: 900; line-height: 1.1; color: #A8322A; border: 2px solid rgba(168, 50, 42, .85); border-radius: 4px; transform: rotate(-12deg); writing-mode: vertical-rl; background: rgba(246, 240, 228, .6); }
+  /* 玉牌 */
+  .a-jade-bg { position: absolute; inset: 0; border-radius: 2px; background: radial-gradient(70% 60% at 50% 30%, rgba(124, 196, 174, .25), transparent), #121A2C; }
+  .a-jade { position: relative; width: 58px; height: 92px; margin-top: -14px; border-radius: 29px 29px 8px 8px / 22px 22px 8px 8px; background: linear-gradient(160deg, #E4F5EE, #A9D9C8 52%, #6FB39C); box-shadow: 0 0 22px rgba(124, 214, 186, .45), inset 0 0 0 3px rgba(255, 255, 255, .25); }
+  .a-jade::before { content: ""; position: absolute; top: 9px; left: 50%; width: 9px; height: 9px; margin-left: -4.5px; border-radius: 50%; background: #121A2C; }
+  .a-jade::after { content: ""; position: absolute; left: 50%; top: 100%; width: 2px; height: 26px; background: #C0392B; box-shadow: -3px 18px 0 0 #C0392B, 3px 18px 0 0 #C0392B; }
+  /* 秘籍 */
+  .a-book { position: relative; width: 84px; height: 118px; background: repeating-linear-gradient(0deg, rgba(255, 255, 255, .05) 0 1px, transparent 1px 4px), #26344F; border-radius: 1px 3px 3px 1px; box-shadow: 0 10px 18px -10px rgba(20, 30, 40, .7); }
+  .a-book::before { content: ""; position: absolute; left: 10px; top: 10px; width: 22px; height: 78px; background: #EFE7D2; box-shadow: inset 0 0 0 2px #EFE7D2, inset 0 0 0 3px #26344F; }
+  .a-book::after { content: ""; position: absolute; right: 6px; top: 0; bottom: 0; width: 12px;
+    background: linear-gradient(rgba(240, 230, 200, .85), rgba(240, 230, 200, .85)) 0 0 / 1.5px 100% no-repeat,
+      linear-gradient(rgba(240, 230, 200, .85), rgba(240, 230, 200, .85)) 0 15% / 12px 1.5px no-repeat,
+      linear-gradient(rgba(240, 230, 200, .85), rgba(240, 230, 200, .85)) 0 38% / 12px 1.5px no-repeat,
+      linear-gradient(rgba(240, 230, 200, .85), rgba(240, 230, 200, .85)) 0 62% / 12px 1.5px no-repeat,
+      linear-gradient(rgba(240, 230, 200, .85), rgba(240, 230, 200, .85)) 0 85% / 12px 1.5px no-repeat; }
+  /* 戏本 */
+  .a-play { position: relative; width: 92px; height: 122px; display: grid; place-items: center; background: linear-gradient(#8A2B38, #6A1E2A); box-shadow: inset 0 0 0 5px #7A2431, inset 0 0 0 6px #D8B46A, 0 10px 18px -10px rgba(70, 20, 30, .7); color: #E2C07A; font-weight: 900; font-size: 15px; letter-spacing: .1em; writing-mode: vertical-rl; }
+  @media (prefers-reduced-motion: reduce) { .card { transition: none; } }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1><span>五件古代器物，装着五个你</span>古风人格测试合集</h1>
+    <p class="lead">每个测试十五道生活小问题，两分钟测完。结果不是一张表，而是一件属于你的古代器物，可以署上名字、生成海报。</p>
+  </header>
+
+  <ul class="list">
+    <li><a class="card" style="--c:#3D5B3A" href="01-history-figure.html">
+      <span class="art" aria-hidden="true"><span class="a-slips"><i></i><i></i><i></i><i></i><i></i></span></span>
+      <span class="body"><h2>测测你的灵魂对应哪位中国历史人物</h2>
+        <p>太史公为你写一卷竹简列传：你是今之哪位古人？</p>
+        <p class="meta">15 道题，18 位历史人物</p></span></a></li>
+    <li><a class="card" style="--c:#9A2F27" href="02-ancient-identity.html">
+      <span class="art" aria-hidden="true"><span class="a-doc"><b>户部</b></span></span>
+      <span class="body"><h2>测测你在古代是什么身份</h2>
+        <p>户部补办一张盖了官印的身份文牒：首辅、神医、镖头，还是闲散王爷？</p>
+        <p class="meta">15 道题，14 种古代身份</p></span></a></li>
+    <li><a class="card" style="--c:#2E7A66" href="03-xianxia-role.html">
+      <span class="art" aria-hidden="true"><span class="a-jade-bg"></span><span class="a-jade"></span></span>
+      <span class="body"><h2>测测你在仙侠世界是什么角色</h2>
+        <p>从炼气修到化神，领一块刻着你名号的仙门玉牌。</p>
+        <p class="meta">15 道题，15 种仙侠角色</p></span></a></li>
+    <li><a class="card" style="--c:#2C3E5C" href="04-ancient-talent.html">
+      <span class="art" aria-hidden="true"><span class="a-book"></span></span>
+      <span class="body"><h2>测测你的古代天赋技能</h2>
+        <p>翻开一本只属于你的武林秘籍，天地玄黄，看看你的根骨。</p>
+        <p class="meta">15 道题，14 项天赋技能</p></span></a></li>
+    <li><a class="card" style="--c:#8A2E3B" href="05-life-script.html">
+      <span class="art" aria-hidden="true"><span class="a-play">人生剧本</span></span>
+      <span class="body"><h2>测测你在古代会拥有什么人生剧本</h2>
+        <p>司命星君为你写下的戏本：三回目，一副判词。</p>
+        <p class="meta">15 道题，13 种人生剧本</p></span></a></li>
+  </ul>
+
+  <footer>每个测试的作答进度都会自动保存在你的浏览器里，可以随时回来接着答。</footer>
+</main>
+</body>
+</html>
